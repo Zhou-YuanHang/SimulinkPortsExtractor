@@ -17,7 +17,7 @@ function varargout = PortExtractor(modelName, searchDepth, includeTriggerEnable,
 %   输出:
 %       ports_<modelName>.xlsx 或 ports_<modelName>_yyyymmdd_HHMMSS.xlsx
 %       含 Inputs / Outputs 两个sheet
-%       列：序号 | 端口名称 | 数据类型 | 指定数据类型 | StorageClass | Identifier
+%       列：序号 | 端口名称 | 数据类型 | StorageClass | Identifier | HeaderFile | DefinitionFile
 
     %% ---------- 参数校验 ----------
     narginchk(2, 5);
@@ -119,14 +119,14 @@ function varargout = PortExtractor(modelName, searchDepth, includeTriggerEnable,
     numIn = numel(inportNames);
 
     %% ---------- 构建表格 ----------
-    varNames = {'序号', '端口名称', '数据类型', '指定数据类型', 'StorageClass', 'Identifier'};
-    varTypes = {'double', 'cell', 'cell', 'cell', 'cell', 'cell'};
+    varNames = {'序号', '端口名称', '数据类型', 'StorageClass', 'Identifier', 'HeaderFile', 'DefinitionFile'};
+    varTypes = {'double', 'cell', 'cell', 'cell', 'cell', 'cell', 'cell'};
 
-    emptyT = table('Size', [0, 6], 'VariableTypes', varTypes, 'VariableNames', varNames);
+    emptyT = table('Size', [0, 7], 'VariableTypes', varTypes, 'VariableNames', varNames);
 
     if numIn > 0
         tIn = table((1:numIn)', inportNames, inportTypes, ...
-            cell(numIn,1), cell(numIn,1), cell(numIn,1), ...
+            cell(numIn,1), cell(numIn,1), cell(numIn,1), cell(numIn,1), ...
             'VariableNames', varNames);
     else
         tIn = emptyT;
@@ -134,7 +134,7 @@ function varargout = PortExtractor(modelName, searchDepth, includeTriggerEnable,
 
     if numOut > 0
         tOut = table((1:numOut)', outportNames, outportTypes, ...
-            cell(numOut,1), cell(numOut,1), cell(numOut,1), ...
+            cell(numOut,1), cell(numOut,1), cell(numOut,1), cell(numOut,1), ...
             'VariableNames', varNames);
     else
         tOut = emptyT;

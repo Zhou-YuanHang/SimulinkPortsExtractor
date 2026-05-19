@@ -45,12 +45,12 @@ PortExtractor('myModel', 1, false, 'Subsys1/Subsys2')
 
 **Outputs** — 所有 Outport
 
-| 序号 | 端口名称 | 数据类型 | 指定数据类型 | StorageClass | Identifier |
-|:---:|:--------:|:--------:|:-----------:|:-----------:|:---------:|
-| 1 | In1 | double | (留空) | (留空) | (留空) |
-| 2 | In2 | uint8 | (留空) | (留空) | (留空) |
+| 序号 | 端口名称 | 数据类型 | StorageClass | Identifier | HeaderFile | DefinitionFile |
+|:---:|:--------:|:--------:|:-----------:|:---------:|:---------:|:-------------:|
+| 1 | In1 | double | (留空) | (留空) | (留空) | (留空) |
+| 2 | In2 | uint8 | (留空) | (留空) | (留空) | (留空) |
 
-> "指定数据类型"、"StorageClass"、"Identifier" 三列留空，供 CodeMapping 手动填写。
+> "StorageClass"、"Identifier"、"HeaderFile"、"DefinitionFile" 四列留空，供 CodeMapping 手动填写。
 
 ## GUI 用法
 
