@@ -1,6 +1,17 @@
 function PortExtractorGUI()
 % PortExtractorGUI  Simulink端口提取工具 — 图形界面版本
 %
+%   自动将本文件所在目录加入 MATLAB 路径，确保找到 PortExtractor.m
+
+    % 确保 PortExtractor.m 在路径上
+    guiDir = fileparts(mfilename('fullpath'));
+    if ~exist(fullfile(guiDir, 'PortExtractor.m'), 'file')
+        errordlg(sprintf('未找到 PortExtractor.m\n\n请确认它与本 GUI 文件在同一目录：\n%s', guiDir), ...
+            '文件缺失', 'modal');
+        return
+    end
+    addpath(guiDir);
+%
 %   调用方式:  PortExtractorGUI
 %
 %   依赖:
